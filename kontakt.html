@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontakt – Juleyka</title>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Start</a></li>
+        <li><a href="leistungen.html">Leistungen</a></li>
+        <li><a href="ueber-uns.html">Über uns</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="contact">
+      <h1>Kontakt</h1>
+      <form id="contactForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="email">E-Mail:</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="message">Nachricht:</label>
+        <textarea id="message" name="message" required></textarea>
+        
+        <p class="dsgvo">
+          Mit dem Absenden dieser Nachricht stimmen Sie der Verarbeitung Ihrer Daten gemäß unserer
+          <a href="datenschutz.html">Datenschutzrichtlinien</a> zu.
+        </p>
+        <button type="submit">Absenden</button>
+      </form>
+      <div class="contact-details">
+        <p><strong>E-Mail:</strong> info@juleyka.de</p>
+        <p><strong>Anschrift:</strong> Musterstraße 1, 12345 Musterstadt</p>
+        <!-- Optional: Lageplan/Anfahrtsbeschreibung -->
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="footer-links">
+      <a href="agb.html">AGB</a> |
+      <a href="datenschutz.html">Datenschutz</a> |
+      <a href="impressum.html">Impressum</a>
+    </div>
+    <div class="footer-info">
+      <p>&copy; 2025 Juleyka. Alle Rechte vorbehalten.</p>
+    </div>
+  </footer>
+  <script src="js/main.js"></script>
+</body>
+</html>

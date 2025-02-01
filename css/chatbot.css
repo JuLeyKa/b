@@ -1,0 +1,67 @@
+/* Filename: css/chatbot.css */
+.chatbot {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 300px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+}
+
+.chatbot-header {
+  background: #3498db;
+  color: #fff;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: move; /* Für Drag-and-Drop */
+}
+
+.chatbot-messages {
+  flex: 1;
+  padding: 0.5rem;
+  overflow-y: auto;
+  max-height: 200px;
+}
+
+.chatbot-messages .message {
+  margin-bottom: 0.5rem;
+}
+
+.chatbot-messages .bot {
+  background: #ecf0f1;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+.chatbot-messages .user {
+  background: #bdc3c7;
+  padding: 0.5rem;
+  border-radius: 5px;
+  text-align: right;
+}
+
+.chatbot-input {
+  display: flex;
+  border-top: 1px solid #ddd;
+}
+
+.chatbot-input input {
+  flex: 1;
+  border: none;
+  padding: 0.5rem;
+}
+
+.chatbot-input button {
+  border: none;
+  background: #3498db;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
