@@ -3,13 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Strategieberatung & KI-Schulungen – Juleyka</title>
+  <title>Strategieberatung &amp; KI-Schulungen – Juleyka</title>
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/chatbot.css">
 </head>
 <body>
   <header>
     <nav>
-      <ul>
+      <button class="menu-toggle">&#9776;</button>
+      <ul class="menu">
         <li><a href="index.html">Start</a></li>
         <li><a href="leistungen.html">Leistungen</a></li>
         <li><a href="ueber-uns.html">Über uns</a></li>
@@ -20,7 +22,7 @@
   </header>
   <main>
     <section class="detail">
-      <h1>Strategieberatung & KI-Schulungen</h1>
+      <h1>Strategieberatung &amp; KI-Schulungen</h1>
       <p>Wir bieten individuelle Beratungen für KI-Strategien, Workshops und Schulungen für Teams. Steigere den Erfolg deines Unternehmens durch frühzeitige KI-Implementierungen und praxisnahe Schulungen.</p>
       <h2>Kursangebote:</h2>
       <ul>
@@ -40,6 +42,38 @@
       <p>&copy; 2025 Juleyka. Alle Rechte vorbehalten.</p>
     </div>
   </footer>
+  
+  <!-- Chatbot -->
+  <div id="chatbot" class="chatbot">
+    <div class="chatbot-header" id="chatbotHeader">
+      <h3>Juleyka Chatbot</h3>
+      <div>
+        <button id="chatbotMinimize">_</button>
+        <button id="chatbotClose">X</button>
+      </div>
+    </div>
+    <div class="chatbot-messages" id="chatbotMessages">
+      <div class="message bot">Hallo, hier ist Juleyka. Wie kann ich helfen?</div>
+    </div>
+    <div class="chatbot-input">
+      <input type="text" id="chatInput" placeholder="Schreibe deine Nachricht...">
+      <button id="sendMessage">Senden</button>
+    </div>
+  </div>
+  <div id="chatbotLauncher">Chat öffnen</div>
+  
+  <!-- JavaScript -->
   <script src="js/main.js"></script>
+  <script src="js/chatbot.js"></script>
+  <script>
+    // Hamburger-Menü Toggle für Mobilgeräte
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const menu = document.querySelector('.menu');
+      menuToggle.addEventListener('click', () => {
+        menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+      });
+    });
+  </script>
 </body>
 </html>

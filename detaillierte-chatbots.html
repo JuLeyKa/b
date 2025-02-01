@@ -3,13 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Intelligente Chatbots & Sprachassistenten – Juleyka</title>
+  <title>Intelligente Chatbots &amp; Sprachassistenten – Juleyka</title>
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/chatbot.css">
 </head>
 <body>
   <header>
     <nav>
-      <ul>
+      <button class="menu-toggle">&#9776;</button>
+      <ul class="menu">
         <li><a href="index.html">Start</a></li>
         <li><a href="leistungen.html">Leistungen</a></li>
         <li><a href="ueber-uns.html">Über uns</a></li>
@@ -20,12 +22,12 @@
   </header>
   <main>
     <section class="detail">
-      <h1>Intelligente Chatbots & Sprachassistenten</h1>
+      <h1>Intelligente Chatbots &amp; Sprachassistenten</h1>
       <h2>Warum ein KI-gestützter Chatbot oder Sprachassistent?</h2>
       <ul>
         <li>Automatisierung: Nie wieder manuelle Kunden-E-Mails.</li>
         <li>24/7 Kundenservice: Rund-um-die-Uhr Betreuung.</li>
-        <li>Multi-Channel: WhatsApp, Messenger, Slack, Website & Telefon.</li>
+        <li>Multi-Channel: WhatsApp, Messenger, Slack, Website &amp; Telefon.</li>
         <li>Personalisierte Interaktionen: KI lernt aus Nutzerdaten.</li>
       </ul>
       <h2>Unsere Technologien:</h2>
@@ -37,7 +39,7 @@
       <ul>
         <li>Automatischer Kundenservice, telefonischer Support, E-Commerce-Bots, interne Automatisierung.</li>
       </ul>
-      <h2>Preis- & Paketstruktur:</h2>
+      <h2>Preis- &amp; Paketstruktur:</h2>
       <ul>
         <li>Basic-Paket: FAQ-Chatbot für Websites (199€).</li>
         <li>Advanced-Paket: KI-gestützter Chatbot mit CRM-Anbindung (499€).</li>
@@ -56,6 +58,38 @@
       <p>&copy; 2025 Juleyka. Alle Rechte vorbehalten.</p>
     </div>
   </footer>
+  
+  <!-- Chatbot -->
+  <div id="chatbot" class="chatbot">
+    <div class="chatbot-header" id="chatbotHeader">
+      <h3>Juleyka Chatbot</h3>
+      <div>
+        <button id="chatbotMinimize">_</button>
+        <button id="chatbotClose">X</button>
+      </div>
+    </div>
+    <div class="chatbot-messages" id="chatbotMessages">
+      <div class="message bot">Hallo, hier ist Juleyka. Wie kann ich helfen?</div>
+    </div>
+    <div class="chatbot-input">
+      <input type="text" id="chatInput" placeholder="Schreibe deine Nachricht...">
+      <button id="sendMessage">Senden</button>
+    </div>
+  </div>
+  <div id="chatbotLauncher">Chat öffnen</div>
+  
+  <!-- JavaScript -->
   <script src="js/main.js"></script>
+  <script src="js/chatbot.js"></script>
+  <script>
+    // Hamburger-Menü Toggle für Mobilgeräte
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const menu = document.querySelector('.menu');
+      menuToggle.addEventListener('click', () => {
+        menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+      });
+    });
+  </script>
 </body>
 </html>
