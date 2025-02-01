@@ -1,17 +1,27 @@
 /* Filename: css/main.css */
+
+/* Reset & Global */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+html, body {
+  height: 100%;
+}
+
 body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; 
   font-family: Arial, sans-serif;
-  background-color: #f8f8f8;
+  background-color: #f8f8f8; 
   color: #333;
   line-height: 1.6;
 }
 
+/* Header */
 header {
   background: #2c3e50;
   color: #fff;
@@ -34,6 +44,17 @@ header nav ul li a {
   font-weight: bold;
 }
 
+header nav ul li a:hover {
+  text-decoration: underline;
+}
+
+/* MAIN-Bereich */
+main {
+  flex: 1;
+  padding: 2rem;
+}
+
+/* Footer */
 footer {
   background: #2c3e50;
   color: #fff;
@@ -47,8 +68,79 @@ footer .footer-links a {
   text-decoration: none;
 }
 
-main {
-  padding: 2rem;
+footer .footer-links a:hover {
+  text-decoration: underline;
+}
+
+.footer-info p {
+  margin: 0.2rem 0;
+}
+
+/* Hero-Bereich */
+.hero {
+  background-color: #bdc3c7;
+  padding: 1rem 2rem;
+  text-align: center;
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero p {
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* Offers-Bereich */
+.offers {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.offers h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.offers p {
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Eyecatcher-Gitter */
+.eyecatcher-grid {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.eyecatcher {
+  background-color: #ecf0f1;
+  border-radius: 5px;
+  padding: 1rem;
+  width: 250px;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.eyecatcher img {
+  max-width: 80px;
+  margin-bottom: 1rem;
+}
+
+.eyecatcher h3 {
+  margin-bottom: 0.5rem;
 }
 
 /* Cookie Popup */
@@ -83,6 +175,14 @@ main {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+.card h3 {
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  margin-bottom: 0.5rem;
+}
+
 .card a {
   display: inline-block;
   margin-top: 1rem;
@@ -91,6 +191,10 @@ main {
   padding: 0.5rem 1rem;
   text-decoration: none;
   border-radius: 3px;
+}
+
+.card a:hover {
+  opacity: 0.8;
 }
 
 .cta {
@@ -103,10 +207,20 @@ main {
   border-radius: 3px;
 }
 
-/* Responsive Design */
+.cta:hover {
+  opacity: 0.8;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
   header nav ul {
     flex-direction: column;
     align-items: center;
+  }
+  .hero {
+    padding: 1rem 1rem;
+  }
+  .hero h1 {
+    font-size: 1.4rem;
   }
 }

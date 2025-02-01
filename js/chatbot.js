@@ -1,33 +1,61 @@
 /* Filename: js/chatbot.js */
 document.addEventListener('DOMContentLoaded', () => {
-  const sendMessageBtn = document.getElementById('sendMessage');
+  const chatbot = document.getElementById('chatbot');
+  const minimizeBtn = document.getElementById('chatbotMinimize');
+  const closeBtn = document.getElementById('chatbotClose');
+  const sendBtn = document.getElementById('sendMessage');
   const chatInput = document.getElementById('chatInput');
   const chatMessages = document.getElementById('chatbotMessages');
-  const chatbotMinimize = document.getElementById('chatbotMinimize');
+  const launcher = document.getElementById('chatbotLauncher');
 
-  sendMessageBtn.addEventListener('click', () => {
-    const message = chatInput.value.trim();
-    if (message !== '') {
-      addMessage('user', message);
-      // Simuliere eine Bot-Antwort
-      setTimeout(() => {
-        addMessage('bot', "Danke für deine Nachricht. Wir melden uns in Kürze.");
-      }, 1000);
-      chatInput.value = '';
+  // Minimieren / Wiederherstellen
+  minimizeBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    chatbot.classList.toggle('minimized');
+  });
+
+  // Chat schließen – verstecke Chatfenster und zeige Launcher
+  closeBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    chatbot.style.display = 'none';
+    launcher.style.display = 'block';
+  });
+
+  // Chat per Launcher wieder öffnen
+  launcher.addEventListener('click', () => {
+    chatbot.style.display = 'flex';
+    launcher.style.display = 'none';
+  });
+
+  // Nachricht senden (Button)
+  sendBtn.addEventListener('click', () => {
+    sendUserMessage();
+  });
+
+  // Nachricht senden (Enter-Taste)
+  chatInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      sendUserMessage();
     }
   });
 
-  function addMessage(sender, message) {
-    const messageDiv = document.createElement('div');
-    messageDiv.classList.add('message', sender);
-    messageDiv.textContent = message;
-    chatMessages.appendChild(messageDiv);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
+  function sendUserMessage() {
+    const text = chatInput.value.trim();
+    if (text === '') return;
+    addMessage('user', text);
+    chatInput.value = '';
+    // Demo-Antwort des Bots nach 1 Sekunde
+    setTimeout(() => {
+      addMessage('bot', 'Danke für deine Nachricht. Wir melden uns in Kürze.');
+    }, 1000);
   }
 
-  // Minimierungslogik: Toggle Chat-Fenster
-  chatbotMinimize.addEventListener('click', () => {
-    const chatbot = document.getElementById('chatbot');
-    chatbot.classList.toggle('minimized');
-  });
+  function addMessage(sender, msg) {
+    const div = document.createElement('div');
+    div.classList.add('message', sender);
+    div.textContent = msg;
+    chatMessages.appendChild(div);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
 });

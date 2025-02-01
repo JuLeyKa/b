@@ -1,13 +1,14 @@
 /* Filename: js/main.js */
-// Gemeinsame JS-Funktionen und z. B. Drag-and-Drop für den Chatbot
-
 document.addEventListener('DOMContentLoaded', () => {
   const chatbot = document.getElementById('chatbot');
   const header = chatbot.querySelector('.chatbot-header');
+  
   let isDragging = false;
   let offsetX, offsetY;
 
   header.addEventListener('mousedown', (e) => {
+    // Starte Drag nur, wenn nicht auf einen Button geklickt wird
+    if (e.target.tagName === 'BUTTON') return;
     isDragging = true;
     offsetX = e.clientX - chatbot.offsetLeft;
     offsetY = e.clientY - chatbot.offsetTop;
@@ -18,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (isDragging) {
       chatbot.style.left = (e.clientX - offsetX) + 'px';
       chatbot.style.top = (e.clientY - offsetY) + 'px';
-      chatbot.style.position = 'absolute';
+      chatbot.style.position = 'fixed';
     }
   });
 

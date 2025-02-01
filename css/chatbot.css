@@ -1,18 +1,34 @@
 /* Filename: css/chatbot.css */
+
+/* Chatbot Container – fester Größe */
 .chatbot {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  width: 300px;
+  width: 350px;
+  height: 400px;
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 5px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
   z-index: 1001;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
+/* Wenn minimiert: nur Header sichtbar */
+.chatbot.minimized {
+  height: 40px;
+}
+
+/* Inhalte ausblenden, wenn minimiert */
+.chatbot.minimized .chatbot-messages,
+.chatbot.minimized .chatbot-input {
+  display: none;
+}
+
+/* Chatbot Header */
 .chatbot-header {
   background: #3498db;
   color: #fff;
@@ -20,42 +36,42 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  cursor: move; /* Für Drag-and-Drop */
+  cursor: move;  /* Ermöglicht Drag & Drop */
 }
 
+.chatbot-header h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* Header-Buttons */
+.chatbot-header button {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+/* Chatnachrichten-Bereich */
 .chatbot-messages {
   flex: 1;
   padding: 0.5rem;
   overflow-y: auto;
-  max-height: 200px;
 }
 
-.chatbot-messages .message {
-  margin-bottom: 0.5rem;
-}
-
-.chatbot-messages .bot {
-  background: #ecf0f1;
-  padding: 0.5rem;
-  border-radius: 5px;
-}
-
-.chatbot-messages .user {
-  background: #bdc3c7;
-  padding: 0.5rem;
-  border-radius: 5px;
-  text-align: right;
-}
-
+/* Chat-Eingabe */
 .chatbot-input {
-  display: flex;
   border-top: 1px solid #ddd;
+  display: flex;
 }
 
 .chatbot-input input {
   flex: 1;
   border: none;
   padding: 0.5rem;
+  outline: none;
 }
 
 .chatbot-input button {
@@ -64,4 +80,31 @@
   color: #fff;
   padding: 0.5rem 1rem;
   cursor: pointer;
+}
+
+/* Chat Launcher – erscheint, wenn der Chat geschlossen ist */
+#chatbotLauncher {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #3498db;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1001;
+  display: none;
+}
+
+/* Responsive Anpassung */
+@media (max-width: 768px) {
+  .chatbot {
+    width: 90%;
+    right: 5%;
+    bottom: 10px;
+  }
+  #chatbotLauncher {
+    width: 90%;
+    right: 5%;
+  }
 }

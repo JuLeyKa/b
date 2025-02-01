@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Juleyka – KI-Dienstleistungen & Webentwicklung</title>
+  <title>Juleyka – KI-Dienstleistungen &amp; Webentwicklung</title>
+  <!-- Styles -->
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/slider.css">
   <link rel="stylesheet" href="css/chatbot.css">
@@ -31,13 +32,17 @@
     <button id="cookieAccept">Zustimmen</button>
   </div>
 
+  <!-- Hero-Bereich -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Willkommen bei Juleyka</h1>
+      <p>Entdecke unsere KI-Dienstleistungen &amp; Webentwicklung.</p>
+    </div>
+  </section>
+
   <!-- Slider -->
   <div class="slider">
     <div class="slide active">
-      <h1>Willkommen bei Juleyka</h1>
-      <p>Entdecke unsere KI-Dienstleistungen & Webentwicklung.</p>
-    </div>
-    <div class="slide">
       <h2>Chatbot-Integration für Homepages ab 199€</h2>
     </div>
     <div class="slide">
@@ -54,9 +59,12 @@
 
   <!-- Chatbot -->
   <div id="chatbot" class="chatbot">
-    <div class="chatbot-header">
+    <div class="chatbot-header" id="chatbotHeader">
       <h3>Juleyka Chatbot</h3>
-      <button id="chatbotMinimize">_</button>
+      <div>
+        <button id="chatbotMinimize">_</button>
+        <button id="chatbotClose">X</button>
+      </div>
     </div>
     <div class="chatbot-messages" id="chatbotMessages">
       <div class="message bot">Hallo, hier ist Juleyka. Wie kann ich helfen?</div>
@@ -67,11 +75,43 @@
     </div>
   </div>
 
-  <!-- Main Content -->
+  <!-- Chat Launcher (erscheint, wenn der Chat geschlossen ist) -->
+  <div id="chatbotLauncher">Chat öffnen</div>
+
+  <!-- Hauptbereich -->
   <main>
-    <section>
+    <section class="offers">
       <h2>Unsere Angebote</h2>
       <p>Informiere dich über unsere innovativen Lösungen.</p>
+      <div class="eyecatcher-grid">
+        <div class="eyecatcher">
+          <img src="https://via.placeholder.com/80" alt="Icon oder Bild">
+          <h3>Intelligente Chatbots</h3>
+          <p>Runde deine Kundenkommunikation mit 24/7 KI-Support ab.</p>
+        </div>
+        <div class="eyecatcher">
+          <img src="https://via.placeholder.com/80" alt="Icon oder Bild">
+          <h3>Automatisierungen</h3>
+          <p>Automatische Workflows für mehr Effizienz in deinem Unternehmen.</p>
+        </div>
+        <div class="eyecatcher">
+          <img src="https://via.placeholder.com/80" alt="Icon oder Bild">
+          <h3>Strategieberatung</h3>
+          <p>Professionelle KI-Integration – passgenau für dein Business.</p>
+        </div>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <h3>Beispiel-Karte 1</h3>
+          <p>Text für Karte 1...</p>
+          <a href="#">Mehr erfahren</a>
+        </div>
+        <div class="card">
+          <h3>Beispiel-Karte 2</h3>
+          <p>Text für Karte 2...</p>
+          <a href="#">Mehr erfahren</a>
+        </div>
+      </div>
     </section>
   </main>
 
