@@ -143,20 +143,17 @@ footer .footer-links a:hover {
   margin-bottom: 0.5rem;
 }
 
-/* Cookie Popup */
+/* Cookie Popup – oben mittig platzieren */
 .cookie-popup {
   position: fixed;
-  bottom: 20px;
-  left: 20px;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
   background: rgba(44, 62, 80, 0.9);
   color: #fff;
   padding: 1rem;
   border-radius: 5px;
   z-index: 1000;
-}
-
-.cookie-popup a {
-  color: #3498db;
 }
 
 /* Cards */
