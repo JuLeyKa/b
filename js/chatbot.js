@@ -8,46 +8,58 @@ document.addEventListener('DOMContentLoaded', () => {
   const chatMessages = document.getElementById('chatbotMessages');
   const launcher = document.getElementById('chatbotLauncher');
 
-  // Chatverlauf laden – falls vorhanden
+  // Lade den gespeicherten Chat-Zustand; Standardwert ist "closed"
+  let chatState = localStorage.getItem('chatState');
+  if (!chatState) {
+    chatState = 'closed';
+    localStorage.setItem('chatState', chatState);
+  }
+  // Setze den Chat je nach gespeichertem Zustand
+  if (chatState === 'closed') {
+    chatbot.style.display = 'none';
+    launcher.style.display = 'block';
+  } else if (chatState === 'minimized') {
+    chatbot.classList.add('minimized');
+    chatbot.style.display = 'flex';
+    launcher.style.display = 'none';
+  } else { // "open"
+    chatbot.style.display = 'flex';
+    chatbot.classList.remove('minimized');
+    launcher.style.display = 'none';
+  }
+
+  // Chatverlauf laden (falls vorhanden)
   let chatHistory = JSON.parse(localStorage.getItem('chatHistory')) || [];
   chatHistory.forEach(message => {
     addMessage(message.sender, message.text, false);
   });
 
-  // Minimieren / Wiederherstellen
-  minimizeBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    if (!chatbot.classList.contains('minimized')) {
-      // Vor Minimierung könnte man auch die aktuelle Position speichern, falls nötig.
-      chatbot.classList.add('minimized');
-      // Setze den Chat an eine feste, "schöne" Position (hier: untere rechte Ecke)
-      chatbot.style.left = '';
-      chatbot.style.top = '';
-      chatbot.style.bottom = '20px';
-      chatbot.style.right = '20px';
-    } else {
-      // Wiederherstellen: entferne den minimized-Zustand und setze die ursprüngliche Position zurück.
-      chatbot.classList.remove('minimized');
-      chatbot.style.bottom = '';
-      chatbot.style.right = '';
-      // Optional: Falls du die ursprüngliche Position speichern möchtest, kannst du diese hier wieder einsetzen.
-    }
-  });
-
-  // Chat schließen – Chatfenster ausblenden, Launcher anzeigen und Verlauf löschen
+  // Schließen-Button: Chatfenster ausblenden und Zustand speichern
   closeBtn.addEventListener('click', (e) => {
     e.stopPropagation();
     chatbot.style.display = 'none';
     launcher.style.display = 'block';
-    localStorage.removeItem('chatHistory');
-    chatMessages.innerHTML = '';
-    chatHistory = [];
+    localStorage.setItem('chatState', 'closed');
   });
 
-  // Chat per Launcher wieder öffnen
+  // Minimieren-Button: Zwischen minimiert und offen wechseln und Zustand speichern
+  minimizeBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (!chatbot.classList.contains('minimized')) {
+      chatbot.classList.add('minimized');
+      localStorage.setItem('chatState', 'minimized');
+    } else {
+      chatbot.classList.remove('minimized');
+      localStorage.setItem('chatState', 'open');
+    }
+  });
+
+  // Launcher-Button: Chatfenster öffnen und Zustand auf "open" setzen
   launcher.addEventListener('click', () => {
     chatbot.style.display = 'flex';
     launcher.style.display = 'none';
+    chatbot.classList.remove('minimized');
+    localStorage.setItem('chatState', 'open');
   });
 
   // Nachricht senden (Button)
@@ -68,15 +80,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (text === '') return;
     addMessage('user', text, true);
     chatInput.value = '';
-    // Demo: Bot-Antwort nach 1 Sekunde
+    // Demo-Antwort des Bots nach 1 Sekunde
     setTimeout(() => {
       addMessage('bot', 'Danke für deine Nachricht. Wir melden uns in Kürze.', true);
     }, 1000);
   }
 
   /**
-   * Fügt eine Nachricht in den Chat ein und speichert sie (falls save true ist)
-   * @param {string} sender - 'user' oder 'bot'
+   * Fügt eine Nachricht in den Chat ein und speichert sie ggf. im localStorage.
+   * @param {string} sender - "user" oder "bot"
    * @param {string} msg - Die Nachricht
    * @param {boolean} [save=true] - Ob die Nachricht gespeichert werden soll
    */
