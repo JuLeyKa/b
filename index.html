@@ -10,10 +10,11 @@
   <link rel="stylesheet" href="css/chatbot.css">
 </head>
 <body>
-  <!-- Header Navigation -->
+  <!-- Header Navigation mit Hamburger-Menü -->
   <header>
     <nav>
-      <ul>
+      <button class="menu-toggle">&#9776;</button>
+      <ul class="menu">
         <li><a href="index.html">Start</a></li>
         <li><a href="leistungen.html">Leistungen</a></li>
         <li><a href="ueber-uns.html">Über uns</a></li>
@@ -86,11 +87,11 @@
 
   <!-- Hauptbereich -->
   <main>
-    <!-- Angebotsbereich mit zusätzlichem Abstand -->
+    <!-- Angebotsbereich – zusätzliche Marge sorgt für mehr Platz für den Slider -->
     <section class="offers" style="margin-top: 60px;">
       <h2>Unsere Angebote</h2>
       <p>Informiere dich über unsere innovativen Lösungen.</p>
-      <!-- Drei Karten, die direkt zu Leistungen verlinken -->
+      <!-- Die drei Karten verlinken direkt zur Seite "leistungen.html" -->
       <div class="eyecatcher-grid">
         <a href="leistungen.html" class="eyecatcher">
           <img src="https://via.placeholder.com/80" alt="Icon oder Bild">
@@ -129,5 +130,20 @@
   <script src="js/slider.js"></script>
   <script src="js/chatbot.js"></script>
   <script src="js/cookie.js"></script>
+  <script>
+    // Hamburger-Menü Toggle für Mobilgeräte
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const menu = document.querySelector('.menu');
+      
+      menuToggle.addEventListener('click', () => {
+        if (menu.style.display === 'block') {
+          menu.style.display = 'none';
+        } else {
+          menu.style.display = 'block';
+        }
+      });
+    });
+  </script>
 </body>
 </html>

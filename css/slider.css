@@ -24,6 +24,11 @@
   opacity: 1;
 }
 
+/* Hier wird die Schriftfarbe der Slider-Überschriften auf #333 gesetzt */
+.slider .slide h2 {
+  color: #333;
+}
+
 .slider-controls {
   position: absolute;
   top: 50%;

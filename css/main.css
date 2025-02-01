@@ -14,9 +14,9 @@ html, body {
 body {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; 
+  min-height: 100vh;
   font-family: Arial, sans-serif;
-  background-color: #f8f8f8; 
+  background-color: #f8f8f8;
   color: #333;
   line-height: 1.6;
 }
@@ -28,24 +28,64 @@ header {
   padding: 1rem 0;
 }
 
-header nav ul {
-  list-style: none;
+header nav {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
 }
 
-header nav ul li {
+header nav .menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+header nav .menu li {
   margin: 0 1rem;
 }
 
-header nav ul li a {
+header nav .menu li a {
   color: #fff;
   text-decoration: none;
   font-weight: bold;
 }
 
-header nav ul li a:hover {
+header nav .menu li a:hover {
   text-decoration: underline;
+}
+
+/* Hamburger-Button */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* Mobile Styles für Navigation */
+@media (max-width: 768px) {
+  header nav .menu {
+    display: none;
+    flex-direction: column;
+    background: #2c3e50;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+  }
+  
+  header nav .menu li {
+    margin: 1rem 0;
+    text-align: center;
+  }
+  
+  .menu-toggle {
+    display: block;
+  }
 }
 
 /* MAIN-Bereich */
@@ -91,11 +131,13 @@ footer .footer-links a:hover {
 .hero h1 {
   font-size: 1.8rem;
   margin-bottom: 0.5rem;
+  color: #333;
 }
 
 .hero p {
   font-size: 1rem;
   margin: 0;
+  color: #333;
 }
 
 /* Offers-Bereich */
@@ -107,12 +149,13 @@ footer .footer-links a:hover {
 .offers h2 {
   font-size: 1.8rem;
   margin-bottom: 1rem;
+  color: #333;
 }
 
 .offers p {
   margin-bottom: 2rem;
   font-size: 1rem;
-  color: #555;
+  color: #333;
 }
 
 /* Eyecatcher-Gitter */
@@ -125,6 +168,7 @@ footer .footer-links a:hover {
   margin: 0 auto;
 }
 
+/* Eyecatcher-Karten (Links zu Leistungen) */
 .eyecatcher {
   background-color: #ecf0f1;
   border-radius: 5px;
@@ -132,6 +176,13 @@ footer .footer-links a:hover {
   width: 250px;
   text-align: center;
   margin-bottom: 1rem;
+  color: #333; /* Einheitliche Textfarbe */
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.eyecatcher:hover {
+  transform: translateY(-5px);
 }
 
 .eyecatcher img {
@@ -140,23 +191,15 @@ footer .footer-links a:hover {
 }
 
 .eyecatcher h3 {
+  color: #333;
   margin-bottom: 0.5rem;
 }
 
-/* Cookie Popup – oben mittig platzieren */
-.cookie-popup {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(44, 62, 80, 0.9);
-  color: #fff;
-  padding: 1rem;
-  border-radius: 5px;
-  z-index: 1000;
+.eyecatcher p {
+  color: #333;
 }
 
-/* Cards */
+/* Falls weitere Karten vorhanden sind */
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -174,10 +217,12 @@ footer .footer-links a:hover {
 
 .card h3 {
   margin-bottom: 0.5rem;
+  color: #333;
 }
 
 .card p {
   margin-bottom: 0.5rem;
+  color: #333;
 }
 
 .card a {
@@ -210,9 +255,8 @@ footer .footer-links a:hover {
 
 /* Responsive */
 @media (max-width: 768px) {
-  header nav ul {
-    flex-direction: column;
-    align-items: center;
+  header nav .menu {
+    display: none;
   }
   .hero {
     padding: 1rem 1rem;
