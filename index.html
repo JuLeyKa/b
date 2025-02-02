@@ -23,7 +23,7 @@
       </ul>
     </nav>
   </header>
-
+  
   <!-- Cookie & AGB Popup -->
   <div id="cookiePopup" class="cookie-popup">
     <p>
@@ -32,7 +32,7 @@
     </p>
     <button id="cookieAccept">Zustimmen</button>
   </div>
-
+  
   <!-- Hero-Bereich -->
   <section class="hero">
     <div class="hero-content">
@@ -40,7 +40,7 @@
       <p>Entdecke unsere KI-Dienstleistungen &amp; Webentwicklung.</p>
     </div>
   </section>
-
+  
   <!-- Slider -->
   <div class="slider">
     <a href="detaillierte-chatbots.html" class="slide-link">
@@ -48,7 +48,8 @@
         <h2>Chatbot-Integration für Homepages ab 199€</h2>
       </div>
     </a>
-    <a href="detaillierte-automatisierungen.html" class="slide-link">
+    <!-- Hier wurde der Link angepasst: statt "detaillierte-automatisierungen.html" nun "detaillierte-beratung.html" -->
+    <a href="detaillierte-beratung.html" class="slide-link">
       <div class="slide">
         <h2>Zoom-Kurse für KI-Anfänger ab 15€</h2>
       </div>
@@ -63,7 +64,7 @@
       <button class="next">&#10095;</button>
     </div>
   </div>
-
+  
   <!-- Chatbot -->
   <div id="chatbot" class="chatbot">
     <div class="chatbot-header" id="chatbotHeader">
@@ -81,13 +82,10 @@
       <button id="sendMessage">Senden</button>
     </div>
   </div>
-
-  <!-- Chat Launcher (erscheint, wenn der Chat geschlossen ist) -->
   <div id="chatbotLauncher">Chat öffnen</div>
-
+  
   <!-- Hauptbereich -->
   <main>
-    <!-- Angebotsbereich – zusätzliche Marge sorgt für mehr Platz für den Slider -->
     <section class="offers" style="margin-top: 60px;">
       <h2>Unsere Angebote</h2>
       <p>Informiere dich über unsere innovativen Lösungen.</p>
@@ -111,7 +109,7 @@
       </div>
     </section>
   </main>
-
+  
   <!-- Footer -->
   <footer>
     <div class="footer-links">
@@ -121,10 +119,9 @@
     </div>
     <div class="footer-info">
       <p>&copy; 2025 Juleyka. Alle Rechte vorbehalten.</p>
-      <p>Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für die Inhalte externer Links.</p>
     </div>
   </footer>
-
+  
   <!-- JavaScript -->
   <script src="js/main.js"></script>
   <script src="js/slider.js"></script>
@@ -135,13 +132,8 @@
     document.addEventListener('DOMContentLoaded', () => {
       const menuToggle = document.querySelector('.menu-toggle');
       const menu = document.querySelector('.menu');
-      
       menuToggle.addEventListener('click', () => {
-        if (menu.style.display === 'block') {
-          menu.style.display = 'none';
-        } else {
-          menu.style.display = 'block';
-        }
+        menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
       });
     });
   </script>
