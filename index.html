@@ -48,7 +48,6 @@
         <h2>Chatbot-Integration für Homepages ab 199€</h2>
       </div>
     </a>
-    <!-- Hier wurde der Link angepasst: statt "detaillierte-automatisierungen.html" nun "detaillierte-beratung.html" -->
     <a href="detaillierte-beratung.html" class="slide-link">
       <div class="slide">
         <h2>Zoom-Kurse für KI-Anfänger ab 15€</h2>
@@ -65,31 +64,11 @@
     </div>
   </div>
   
-  <!-- Chatbot -->
-  <div id="chatbot" class="chatbot">
-    <div class="chatbot-header" id="chatbotHeader">
-      <h3>Juleyka Chatbot</h3>
-      <div>
-        <button id="chatbotMinimize">_</button>
-        <button id="chatbotClose">X</button>
-      </div>
-    </div>
-    <div class="chatbot-messages" id="chatbotMessages">
-      <div class="message bot">Hallo, hier ist Juleyka. Wie kann ich helfen?</div>
-    </div>
-    <div class="chatbot-input">
-      <input type="text" id="chatInput" placeholder="Schreibe deine Nachricht...">
-      <button id="sendMessage">Senden</button>
-    </div>
-  </div>
-  <div id="chatbotLauncher">Chat öffnen</div>
-  
   <!-- Hauptbereich -->
   <main>
     <section class="offers" style="margin-top: 60px;">
       <h2>Unsere Angebote</h2>
       <p>Informiere dich über unsere innovativen Lösungen.</p>
-      <!-- Die drei Karten verlinken direkt zur Seite "leistungen.html" -->
       <div class="eyecatcher-grid">
         <a href="leistungen.html" class="eyecatcher">
           <img src="https://via.placeholder.com/80" alt="Icon oder Bild">
@@ -137,5 +116,23 @@
       });
     });
   </script>
+
+  <!-- Voiceflow Chatbot -->
+  <script type="text/javascript">
+    (function(d, t) {
+        var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+        v.onload = function() {
+            window.voiceflow.chat.load({
+                verify: { projectID: "6f97850cacc3ebde03d621" }, // Voiceflow Projekt-ID
+                url: "https://general-runtime.voiceflow.com",
+                versionID: "production"
+            });
+        }
+        v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; 
+        v.type = "text/javascript"; 
+        s.parentNode.insertBefore(v, s);
+    })(document, "script");
+  </script>
+
 </body>
 </html>
