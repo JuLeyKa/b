@@ -1,7 +1,4 @@
-// 1) Falls lokal getestet wird, lade Umgebungsvariablen aus `.env`
-require("dotenv").config();
-
-// 2) OpenAI API Key abrufen
+// OpenAI API Key aus Netlify-Umgebung abrufen
 const apiKey = process.env.OPENAI_SECRET_KEY;
 
 exports.handler = async (event) => {
