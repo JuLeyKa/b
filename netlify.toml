@@ -1,9 +1,7 @@
 [build]
-  functions = "netlify/functions" # Hier liegt unser Functions-Folder
-  publish = "public"             # Oder "dist", falls du ein Build-Setup hast
+  functions = "netlify/functions"
+  publish = "."
 
-# Falls du Umleitungen brauchst, könntest du Redirects hinzufügen.
-# Hier ein Beispiel, falls du eine SPA hast:
 [[redirects]]
   from = "/*"
   to = "/index.html"
