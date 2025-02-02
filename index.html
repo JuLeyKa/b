@@ -64,6 +64,25 @@
     </div>
   </div>
   
+  <!-- Chatbot -->
+  <div id="chatbot" class="chatbot">
+    <div class="chatbot-header" id="chatbotHeader">
+      <h3>Juleyka Chatbot</h3>
+      <div>
+        <button id="chatbotMinimize">_</button>
+        <button id="chatbotClose">X</button>
+      </div>
+    </div>
+    <div class="chatbot-messages" id="chatbotMessages">
+      <div class="message bot">Hallo, hier ist Juleyka. Wie kann ich helfen?</div>
+    </div>
+    <div class="chatbot-input">
+      <input type="text" id="chatInput" placeholder="Schreibe deine Nachricht...">
+      <button id="sendMessage">Senden</button>
+    </div>
+  </div>
+  <div id="chatbotLauncher">Chat öffnen</div>
+  
   <!-- Hauptbereich -->
   <main>
     <section class="offers" style="margin-top: 60px;">
@@ -107,7 +126,6 @@
   <script src="js/chatbot.js"></script>
   <script src="js/cookie.js"></script>
   <script>
-    // Hamburger-Menü Toggle für Mobilgeräte
     document.addEventListener('DOMContentLoaded', () => {
       const menuToggle = document.querySelector('.menu-toggle');
       const menu = document.querySelector('.menu');
@@ -117,21 +135,21 @@
     });
   </script>
 
-  <!-- Voiceflow Chatbot -->
+  <!-- Voiceflow Chatbot Script -->
   <script type="text/javascript">
     (function(d, t) {
         var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
         v.onload = function() {
-            window.voiceflow.chat.load({
-                verify: { projectID: "6f97850cacc3ebde03d621" }, // Voiceflow Projekt-ID
-                url: "https://general-runtime.voiceflow.com",
-                versionID: "production"
-            });
+          window.voiceflow.chat.load({
+            verify: { projectID: '679f87050cacc3ebde036d21' },
+            url: 'https://general-runtime.voiceflow.com',
+            versionID: 'production'
+          });
         }
         v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; 
         v.type = "text/javascript"; 
         s.parentNode.insertBefore(v, s);
-    })(document, "script");
+    })(document, 'script');
   </script>
 
 </body>
