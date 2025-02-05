@@ -1,12 +1,11 @@
-<!-- 1) KI-gestützte Automatisierungen – detaillierte-automatisierungen.html -->
 <!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>KI-gestützte Automatisierungen – Juleyka</title>
+  <!-- Nur main.css -->
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/chatbot.css">
 </head>
 <body>
   <header>
@@ -17,13 +16,14 @@
         <li><a href="leistungen.html">Leistungen</a></li>
         <li><a href="ueber-uns.html">Über uns</a></li>
         <li><a href="kontakt.html">Kontakt</a></li>
-        <!-- Hier statt eines einzelnen "Login"-Eintrags die drei IDs -->
+        <!-- Login-/Mitgliederbereich-Links -->
         <li id="loginLink"><a href="login.html">Login</a></li>
         <li id="memberLink" style="display: none;"><a href="member.html">Mitgliederbereich</a></li>
         <li id="logoutLink" style="display: none;"><a href="#">Logout</a></li>
       </ul>
     </nav>
   </header>
+  
   <main>
     <section class="detail">
       <h1>KI-gestützte Automatisierungen</h1>
@@ -45,9 +45,13 @@
         <li>Advanced-Paket: Workflow-Optimierung für Teams (ab 499€).</li>
         <li>Enterprise-Paket: Individuelle Automatisierungslösungen (ab 999€).</li>
       </ul>
-      <a href="kontakt.html" class="cta">Optimiere deine Arbeitsabläufe mit intelligenten Automatisierungslösungen! Jetzt unverbindliche Beratung anfordern!</a>
+      <a href="kontakt.html" class="cta">
+        Optimiere deine Arbeitsabläufe mit intelligenten Automatisierungslösungen! 
+        Jetzt unverbindliche Beratung anfordern!
+      </a>
     </section>
   </main>
+  
   <footer>
     <div class="footer-links">
       <a href="agb.html">AGB</a> |
@@ -59,30 +63,11 @@
     </div>
   </footer>
   
-  <!-- Chatbot (persistent über localStorage) -->
-  <div id="chatbot" class="chatbot">
-    <div class="chatbot-header" id="chatbotHeader">
-      <h3>Juleyka Chatbot</h3>
-      <div>
-        <button id="chatbotMinimize">_</button>
-        <button id="chatbotClose">X</button>
-      </div>
-    </div>
-    <div class="chatbot-messages" id="chatbotMessages">
-      <div class="message bot">Hallo, hier ist Juleyka. Wie kann ich helfen?</div>
-    </div>
-    <div class="chatbot-input">
-      <input type="text" id="chatInput" placeholder="Schreibe deine Nachricht...">
-      <button id="sendMessage">Senden</button>
-    </div>
-  </div>
-  <div id="chatbotLauncher">Chat öffnen</div>
-  
   <!-- JavaScript -->
   <script src="js/main.js"></script>
-  <script src="js/chatbot.js"></script>
+  
+  <!-- Hamburger-Menü Toggle -->
   <script>
-    // Hamburger-Menü Toggle für Mobilgeräte
     document.addEventListener('DOMContentLoaded', () => {
       const menuToggle = document.querySelector('.menu-toggle');
       const menu = document.querySelector('.menu');
@@ -91,7 +76,7 @@
       });
     });
   </script>
-
+  
   <!-- Firebase & Auth-Menü-Check -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";

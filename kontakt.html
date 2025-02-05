@@ -1,12 +1,12 @@
-<!-- 1) kontakt.html -->
+<!-- kontakt.html -->
 <!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kontakt – Juleyka</title>
+  <!-- Nur main.css -->
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/chatbot.css">
 </head>
 <body>
   <header>
@@ -62,30 +62,13 @@
     </div>
   </footer>
   
-  <!-- Chatbot -->
-  <div id="chatbot" class="chatbot">
-    <div class="chatbot-header" id="chatbotHeader">
-      <h3>Juleyka Chatbot</h3>
-      <div>
-        <button id="chatbotMinimize">_</button>
-        <button id="chatbotClose">X</button>
-      </div>
-    </div>
-    <div class="chatbot-messages" id="chatbotMessages">
-      <div class="message bot">Hallo, hier ist Juleyka. Wie kann ich helfen?</div>
-    </div>
-    <div class="chatbot-input">
-      <input type="text" id="chatInput" placeholder="Schreibe deine Nachricht...">
-      <button id="sendMessage">Senden</button>
-    </div>
-  </div>
-  <div id="chatbotLauncher">Chat öffnen</div>
-  
+  <!-- Kein Custom Chatbot mehr -->
+
   <!-- JavaScript -->
   <script src="js/main.js"></script>
-  <script src="js/chatbot.js"></script>
+
+  <!-- Hamburger-Menü Toggle -->
   <script>
-    // Hamburger-Menü Toggle für Mobilgeräte
     document.addEventListener('DOMContentLoaded', () => {
       const menuToggle = document.querySelector('.menu-toggle');
       const menu = document.querySelector('.menu');

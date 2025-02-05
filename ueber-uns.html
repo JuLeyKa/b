@@ -1,4 +1,3 @@
-<!-- 6) ueber-uns.html -->
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -6,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Über uns – Juleyka</title>
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/chatbot.css">
 </head>
 <body>
   <header>
@@ -29,7 +27,7 @@
     <section class="about">
       <h1>Über uns</h1>
       <p>
-        Wir sind Juleyka – ein Team aus erfahrenen Experten im Bereich KI-Dienstleistungen und moderner Webentwicklung. 
+        Wir sind Juleyka – ein Team aus erfahrenen Experten im Bereich KI-Dienstleistungen und moderner Webentwicklung.
         Unsere Mission: KI für jedes Unternehmen zugänglich machen.
       </p>
       <h2>Unser Team</h2>
@@ -38,7 +36,7 @@
       <p>Wir glauben an die transformative Kraft der Technologie und möchten dein Unternehmen fit für die Zukunft machen.</p>
       <h2>Zertifizierungen &amp; Auszeichnungen</h2>
       <p>
-        Unsere Experten sind zertifiziert (z. B. IHK KI-Manager Zertifikat) 
+        Unsere Experten sind zertifiziert (z. B. IHK KI-Manager Zertifikat)
         und haben bereits viele erfolgreiche Projekte umgesetzt.
       </p>
       <h2>Referenzen &amp; Kundenstimmen</h2>
@@ -60,30 +58,12 @@
     </div>
   </footer>
   
-  <!-- Chatbot -->
-  <div id="chatbot" class="chatbot">
-    <div class="chatbot-header" id="chatbotHeader">
-      <h3>Juleyka Chatbot</h3>
-      <div>
-         <button id="chatbotMinimize">_</button>
-         <button id="chatbotClose">X</button>
-      </div>
-    </div>
-    <div class="chatbot-messages" id="chatbotMessages">
-      <div class="message bot">Hallo, hier ist Juleyka. Wie kann ich helfen?</div>
-    </div>
-    <div class="chatbot-input">
-      <input type="text" id="chatInput" placeholder="Schreibe deine Nachricht...">
-      <button id="sendMessage">Senden</button>
-    </div>
-  </div>
-  <div id="chatbotLauncher">Chat öffnen</div>
+  <!-- Kein Custom Chatbot -->
   
   <!-- JavaScript -->
   <script src="js/main.js"></script>
-  <script src="js/chatbot.js"></script>
   <script>
-    // Hamburger-Menü Toggle für Mobilgeräte
+    // Hamburger-Menü Toggle
     document.addEventListener('DOMContentLoaded', () => {
       const menuToggle = document.querySelector('.menu-toggle');
       const menu = document.querySelector('.menu');

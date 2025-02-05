@@ -4,13 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mitgliederbereich – Juleyka</title>
-  <!-- Gleiche Styles wie auf der Startseite -->
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/chatbot.css">
+  <!-- Entweder Chatbot beibehalten oder entfernen -->
 </head>
 <body>
-
-  <!-- Header / Navigation: Genau wie bei index.html -->
   <header>
     <nav>
       <button class="menu-toggle">&#9776;</button>
@@ -19,8 +16,7 @@
         <li><a href="leistungen.html">Leistungen</a></li>
         <li><a href="ueber-uns.html">Über uns</a></li>
         <li><a href="kontakt.html">Kontakt</a></li>
-
-        <!-- Dynamische Links (Login/Logout/Member), falls gewünscht -->
+        <!-- Dynamische Links (Login/Logout/Member) -->
         <li id="loginLink" style="display: none;"><a href="login.html">Login</a></li>
         <li id="memberLink" style="display: none;"><a href="member.html">Mitgliederbereich</a></li>
         <li id="logoutLink" style="display: none;"><a href="#">Logout</a></li>
@@ -28,7 +24,6 @@
     </nav>
   </header>
 
-  <!-- Hauptinhalt: Der eigentliche Mitgliederbereich -->
   <main>
     <section>
       <h1>Willkommen im Mitgliederbereich</h1>
@@ -36,7 +31,6 @@
     </section>
   </main>
 
-  <!-- Footer wie gewohnt -->
   <footer>
     <div class="footer-links">
       <a href="agb.html">AGB</a> |
@@ -48,28 +42,17 @@
     </div>
   </footer>
 
-  <!-- Chatbot-Struktur (falls du denselben Chatbot nutzen möchtest wie auf index.html) -->
+  <!-- Falls du den Chatbot entfernen willst, lösche diesen Abschnitt -->
+  <!-- 
   <div id="chatbot" class="chatbot">
-    <div class="chatbot-header" id="chatbotHeader">
-      <h3>Juleyka Chatbot</h3>
-      <div>
-        <button id="chatbotMinimize">_</button>
-        <button id="chatbotClose">X</button>
-      </div>
-    </div>
-    <div class="chatbot-messages" id="chatbotMessages">
-      <div class="message bot">Hallo, hier ist Juleyka. Wie kann ich helfen?</div>
-    </div>
-    <div class="chatbot-input">
-      <input type="text" id="chatInput" placeholder="Schreibe deine Nachricht...">
-      <button id="sendMessage">Senden</button>
-    </div>
+    ...
   </div>
   <div id="chatbotLauncher">Chat öffnen</div>
+  -->
 
-  <!-- JavaScript (wie auf index.html) -->
+  <!-- Scripts -->
   <script src="js/main.js"></script>
-  <script src="js/chatbot.js"></script>
+  <!-- <script src="js/chatbot.js"></script> (falls Chatbot weg soll, auskommentieren oder löschen) -->
 
   <!-- Hamburger-Menü Toggle -->
   <script>
@@ -82,27 +65,8 @@
     });
   </script>
 
-  <!-- Hier binden wir das Voiceflow-Script etc. nur ein, wenn du es auch im Member-Bereich willst -->
-  <script src="js/cookie.js"></script>
-  <script>
-    // Falls du den Voiceflow-Chatbot auch hier willst, füg ihn ebenso ein:
-    (function(d, t) {
-        var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
-        v.onload = function() {
-          window.voiceflow.chat.load({
-            verify: { projectID: '679f87050cacc3ebde036d21' },
-            url: 'https://general-runtime.voiceflow.com',
-            versionID: 'production'
-          });
-        }
-        v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; 
-        v.type = "text/javascript"; 
-        s.parentNode.insertBefore(v, s);
-    })(document, 'script');
-  </script>
-
-  <!-- Firebase-Check, damit nur eingeloggte User hier landen 
-       + Dynamisches Menü (Login/Logout/Member) -->
+  <!-- Optional: Voiceflow / Cookie / etc. -->
+  <!-- Firebase-Check, damit nur eingeloggte User hier landen + Dynamisches Menü -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-analytics.js";
@@ -123,7 +87,6 @@
     const auth = getAuth(app);
 
     document.addEventListener("DOMContentLoaded", () => {
-
       // 1) Nur eingeloggte User -> sonst Redirect
       onAuthStateChanged(auth, (user) => {
         if (!user) {
@@ -156,6 +119,5 @@
       }
     });
   </script>
-
 </body>
 </html>

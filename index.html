@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Juleyka – KI-Dienstleistungen &amp; Webentwicklung</title>
+  <title>Juleyka – KI-Dienstleistungen & Webentwicklung</title>
   <!-- Styles -->
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/slider.css">
-  <link rel="stylesheet" href="css/chatbot.css">
+  <!-- chatbot.css und der Custom-Chatbot werden NICHT mehr eingebunden -->
 </head>
 <body>
   <!-- Header Navigation mit Hamburger-Menü -->
@@ -19,10 +19,7 @@
         <li><a href="leistungen.html">Leistungen</a></li>
         <li><a href="ueber-uns.html">Über uns</a></li>
         <li><a href="kontakt.html">Kontakt</a></li>
-        <!-- Wir ersetzen hier den alten Login-Eintrag durch drei Li-Elemente:
-             - loginLink (Standard)
-             - memberLink (nur sichtbar, wenn eingeloggt)
-             - logoutLink (nur sichtbar, wenn eingeloggt) -->
+        <!-- Login + Mitgliederbereich + Logout (Firebase-Steuerung) -->
         <li id="loginLink"><a href="login.html">Login</a></li>
         <li id="memberLink" style="display: none;"><a href="member.html">Mitgliederbereich</a></li>
         <li id="logoutLink" style="display: none;"><a href="#">Logout</a></li>
@@ -70,24 +67,7 @@
     </div>
   </div>
   
-  <!-- Chatbot -->
-  <div id="chatbot" class="chatbot">
-    <div class="chatbot-header" id="chatbotHeader">
-      <h3>Juleyka Chatbot</h3>
-      <div>
-        <button id="chatbotMinimize">_</button>
-        <button id="chatbotClose">X</button>
-      </div>
-    </div>
-    <div class="chatbot-messages" id="chatbotMessages">
-      <div class="message bot">Hallo, hier ist Juleyka. Wie kann ich helfen?</div>
-    </div>
-    <div class="chatbot-input">
-      <input type="text" id="chatInput" placeholder="Schreibe deine Nachricht...">
-      <button id="sendMessage">Senden</button>
-    </div>
-  </div>
-  <div id="chatbotLauncher">Chat öffnen</div>
+  <!-- Custom-Chatbot wurde entfernt! Kein <div id="chatbot">...</div> mehr -->
   
   <!-- Hauptbereich -->
   <main>
@@ -129,8 +109,11 @@
   <!-- JavaScript -->
   <script src="js/main.js"></script>
   <script src="js/slider.js"></script>
-  <script src="js/chatbot.js"></script>
+  <!-- Custom-Chatbot-JS auskommentieren/entfernen -->
+  <!-- <script src="js/chatbot.js"></script> -->
   <script src="js/cookie.js"></script>
+
+  <!-- Menü-Toggle -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const menuToggle = document.querySelector('.menu-toggle');
@@ -141,20 +124,20 @@
     });
   </script>
   
-  <!-- Voiceflow Chatbot Script -->
+  <!-- Voiceflow Chatbot Script (bleibt erhalten) -->
   <script type="text/javascript">
     (function(d, t) {
-        var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
-        v.onload = function() {
-          window.voiceflow.chat.load({
-            verify: { projectID: '679f87050cacc3ebde036d21' },
-            url: 'https://general-runtime.voiceflow.com',
-            versionID: 'production'
-          });
-        }
-        v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; 
-        v.type = "text/javascript"; 
-        s.parentNode.insertBefore(v, s);
+      var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+      v.onload = function() {
+        window.voiceflow.chat.load({
+          verify: { projectID: '679f87050cacc3ebde036d21' },
+          url: 'https://general-runtime.voiceflow.com',
+          versionID: 'production'
+        });
+      };
+      v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; 
+      v.type = "text/javascript"; 
+      s.parentNode.insertBefore(v, s);
     })(document, 'script');
   </script>
 
@@ -204,6 +187,5 @@
       });
     });
   </script>
-
 </body>
 </html>
