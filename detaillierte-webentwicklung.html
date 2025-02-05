@@ -16,23 +16,33 @@
         <li><a href="leistungen.html">Leistungen</a></li>
         <li><a href="ueber-uns.html">Über uns</a></li>
         <li><a href="kontakt.html">Kontakt</a></li>
-        <li><a href="login.html">Login</a></li>
+        <!-- Dynamisches Menü -->
+        <li id="loginLink"><a href="login.html">Login</a></li>
+        <li id="memberLink" style="display: none;"><a href="member.html">Mitgliederbereich</a></li>
+        <li id="logoutLink" style="display: none;"><a href="#">Logout</a></li>
       </ul>
     </nav>
   </header>
+
   <main>
     <section class="detail">
       <h1>Moderne Webentwicklung &amp; KI-Integration</h1>
-      <p>Wir erstellen responsive Webseiten und integrieren nahtlos KI-Funktionen wie Chatbots und Analyse-Tools. Unsere Lösungen sind zukunftssicher und bieten eine einfache Content-Verwaltung.</p>
+      <p>
+        Wir erstellen responsive Webseiten und integrieren nahtlos KI-Funktionen wie Chatbots und Analyse-Tools.
+        Unsere Lösungen sind zukunftssicher und bieten eine einfache Content-Verwaltung.
+      </p>
       <h2>Preis- &amp; Paketstruktur:</h2>
       <ul>
         <li>Basic-Webseiten-Paket: ab 299€.</li>
         <li>Web + KI-Komplettlösung: ab 799€.</li>
         <li>Enterprise-Lösung: individuell.</li>
       </ul>
-      <a href="kontakt.html" class="cta">Sichere dir eine moderne Webpräsenz mit KI-Power! Jetzt unverbindlich anfragen!</a>
+      <a href="kontakt.html" class="cta">
+        Sichere dir eine moderne Webpräsenz mit KI-Power! Jetzt unverbindlich anfragen!
+      </a>
     </section>
   </main>
+
   <footer>
     <div class="footer-links">
       <a href="agb.html">AGB</a> |
@@ -73,6 +83,50 @@
       const menu = document.querySelector('.menu');
       menuToggle.addEventListener('click', () => {
         menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+      });
+    });
+  </script>
+
+  <!-- Firebase & Auth-Menü-Check -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-analytics.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyC3yHFXPLtlod0lfYrM7s5_s3zoUMd0rfM",
+      authDomain: "juleykawebsite.firebaseapp.com",
+      projectId: "juleykawebsite",
+      storageBucket: "juleykawebsite.firebasestorage.app",
+      messagingSenderId: "520059467518",
+      appId: "1:520059467518:web:740385071b364b18b557af",
+      measurementId: "G-VTRHVWNNKN"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const auth = getAuth(app);
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const loginLink = document.getElementById("loginLink");
+      const memberLink = document.getElementById("memberLink");
+      const logoutLink = document.getElementById("logoutLink");
+
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          memberLink.style.display = "inline-block";
+          logoutLink.style.display = "inline-block";
+          loginLink.style.display = "none";
+        } else {
+          loginLink.style.display = "inline-block";
+          memberLink.style.display = "none";
+          logoutLink.style.display = "none";
+        }
+      });
+
+      logoutLink.addEventListener("click", async (e) => {
+        e.preventDefault();
+        await signOut(auth);
       });
     });
   </script>

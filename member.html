@@ -1,14 +1,16 @@
-<!-- 2) Strategieberatung & KI-Schulungen – detaillierte-beratung.html -->
 <!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Strategieberatung &amp; KI-Schulungen – Juleyka</title>
+  <title>Mitgliederbereich – Juleyka</title>
+  <!-- Gleiche Styles wie auf der Startseite -->
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/chatbot.css">
 </head>
 <body>
+
+  <!-- Header / Navigation: Genau wie bei index.html -->
   <header>
     <nav>
       <button class="menu-toggle">&#9776;</button>
@@ -17,25 +19,24 @@
         <li><a href="leistungen.html">Leistungen</a></li>
         <li><a href="ueber-uns.html">Über uns</a></li>
         <li><a href="kontakt.html">Kontakt</a></li>
-        <!-- Drei IDs für dynamische Anzeige -->
-        <li id="loginLink"><a href="login.html">Login</a></li>
+
+        <!-- Dynamische Links (Login/Logout/Member), falls gewünscht -->
+        <li id="loginLink" style="display: none;"><a href="login.html">Login</a></li>
         <li id="memberLink" style="display: none;"><a href="member.html">Mitgliederbereich</a></li>
         <li id="logoutLink" style="display: none;"><a href="#">Logout</a></li>
       </ul>
     </nav>
   </header>
+
+  <!-- Hauptinhalt: Der eigentliche Mitgliederbereich -->
   <main>
-    <section class="detail">
-      <h1>Strategieberatung &amp; KI-Schulungen</h1>
-      <p>Wir bieten individuelle Beratungen für KI-Strategien, Workshops und Schulungen für Teams. Steigere den Erfolg deines Unternehmens durch frühzeitige KI-Implementierungen und praxisnahe Schulungen.</p>
-      <h2>Kursangebote:</h2>
-      <ul>
-        <li>Zoom-Kurse für KI-Anfänger ab 15€.</li>
-        <li>Firmenseminare: ab 1.000€ (individuell anpassbar).</li>
-      </ul>
-      <a href="kontakt.html" class="cta">Mach dein Team fit für die Zukunft! Jetzt Kursplatz sichern!</a>
+    <section>
+      <h1>Willkommen im Mitgliederbereich</h1>
+      <p>Hier findest du exklusive Inhalte und weitere Informationen.</p>
     </section>
   </main>
+
+  <!-- Footer wie gewohnt -->
   <footer>
     <div class="footer-links">
       <a href="agb.html">AGB</a> |
@@ -46,8 +47,8 @@
       <p>&copy; 2025 Juleyka. Alle Rechte vorbehalten.</p>
     </div>
   </footer>
-  
-  <!-- Chatbot -->
+
+  <!-- Chatbot-Struktur (falls du denselben Chatbot nutzen möchtest wie auf index.html) -->
   <div id="chatbot" class="chatbot">
     <div class="chatbot-header" id="chatbotHeader">
       <h3>Juleyka Chatbot</h3>
@@ -65,12 +66,13 @@
     </div>
   </div>
   <div id="chatbotLauncher">Chat öffnen</div>
-  
-  <!-- JavaScript -->
+
+  <!-- JavaScript (wie auf index.html) -->
   <script src="js/main.js"></script>
   <script src="js/chatbot.js"></script>
+
+  <!-- Hamburger-Menü Toggle -->
   <script>
-    // Hamburger-Menü Toggle für Mobilgeräte
     document.addEventListener('DOMContentLoaded', () => {
       const menuToggle = document.querySelector('.menu-toggle');
       const menu = document.querySelector('.menu');
@@ -80,11 +82,31 @@
     });
   </script>
 
-  <!-- Firebase & Auth-Menü-Check -->
+  <!-- Hier binden wir das Voiceflow-Script etc. nur ein, wenn du es auch im Member-Bereich willst -->
+  <script src="js/cookie.js"></script>
+  <script>
+    // Falls du den Voiceflow-Chatbot auch hier willst, füg ihn ebenso ein:
+    (function(d, t) {
+        var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+        v.onload = function() {
+          window.voiceflow.chat.load({
+            verify: { projectID: '679f87050cacc3ebde036d21' },
+            url: 'https://general-runtime.voiceflow.com',
+            versionID: 'production'
+          });
+        }
+        v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; 
+        v.type = "text/javascript"; 
+        s.parentNode.insertBefore(v, s);
+    })(document, 'script');
+  </script>
+
+  <!-- Firebase-Check, damit nur eingeloggte User hier landen 
+       + Dynamisches Menü (Login/Logout/Member) -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
-    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-analytics.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyC3yHFXPLtlod0lfYrM7s5_s3zoUMd0rfM",
@@ -101,27 +123,39 @@
     const auth = getAuth(app);
 
     document.addEventListener("DOMContentLoaded", () => {
+
+      // 1) Nur eingeloggte User -> sonst Redirect
+      onAuthStateChanged(auth, (user) => {
+        if (!user) {
+          window.location.href = "login.html";
+        }
+      });
+
+      // 2) Dynamisches Menü
       const loginLink = document.getElementById("loginLink");
       const memberLink = document.getElementById("memberLink");
       const logoutLink = document.getElementById("logoutLink");
 
       onAuthStateChanged(auth, (user) => {
         if (user) {
-          memberLink.style.display = "inline-block";
-          logoutLink.style.display = "inline-block";
-          loginLink.style.display = "none";
+          if (loginLink) loginLink.style.display = "none";
+          if (memberLink) memberLink.style.display = "inline-block";
+          if (logoutLink) logoutLink.style.display = "inline-block";
         } else {
-          loginLink.style.display = "inline-block";
-          memberLink.style.display = "none";
-          logoutLink.style.display = "none";
+          if (loginLink) loginLink.style.display = "inline-block";
+          if (memberLink) memberLink.style.display = "none";
+          if (logoutLink) logoutLink.style.display = "none";
         }
       });
 
-      logoutLink.addEventListener("click", async (e) => {
-        e.preventDefault();
-        await signOut(auth);
-      });
+      if (logoutLink) {
+        logoutLink.addEventListener("click", async (e) => {
+          e.preventDefault();
+          await signOut(auth);
+        });
+      }
     });
   </script>
+
 </body>
 </html>
